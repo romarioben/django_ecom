@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'app/bootstrap/css/bootstrap.min.css' %}">
+    
+
+    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+
+    <title> Produit Journalière | 
+    {% block title %}
+        
+    {% endblock %}
+    </title>
+</head>
+<body>
+    <!-- <h1>Hello Je veux commencer un nouveau projet django ecommerce</h1> -->
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-success" aria-label="Third navbar example">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="{% static 'app/image/product/Neel.png' %}" width="70px" height="70px" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" 
+              data-bs-toggle="dropdown" aria-expanded="false">Product</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'category' 'ML' %}">Milk</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'CR' %}">Curd</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'MS' %}">Milkshake</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'LS' %}">Lassi</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'GH' %}">Ghee</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'PN' %}">Paneer</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'CZ' %}">Cheese</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'IC' %}">Ice cream</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'contact' %}">Contact US</a>
+            </li>
+
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li> -->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li> -->
+          </ul>
+          <form role="search">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          </form>
+        </div>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown mx-2">
+            <a href="" class="nav-link dropdown-toggle text-white text-capitalize" id="profileDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{ request.user }}</a>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Orders</a></li>
+               <li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>
+               <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </li>
+          <li class="nav-item mx-2">
+            <a href="#" class="nav-link text-white">Cart 4</a>
+          </li>
+            <li class="nav-item mx-2">
+              <a href="#" class="nav-link text-white">Wishlist 4</a>
+            </li>
+          {% else %}
+          <li class="nav-item mx-2">
+            <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
+          </li>
+
+          {% endif %}
+
+            
+        </ul>
+
+      </div>
+    </nav>
+
+    
+    {% block banner_slider %}
+      
+    {% endblock banner_slider %}
+
+    
+    {% block information %}
+      
+    {% endblock information %}
+      
+      
+    
+    {% block main-content %}
+        
+    {% endblock main-content %}
+
+    
+    {% block payment-gateway %}
+      
+    {% endblock payment-gateway %}
+      
+    
+    <footer class="container-fluid bg-success fixed-bottom text-center p-2 mt-5">
+        <div>
+            Copyright : 2023 || Develop by Romario Benisto
+        </div>
+    </footer>
+    
+    <script src="{% static 'app/js/all.min.js' %}"></script>
+    <script src="{% static 'app/js/jquery-3.6.4.js' %}"></script>
+    <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'app/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'app/js/myscript.js' %}"></script>
+    
+</body>
+</html>
