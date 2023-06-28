@@ -5,6 +5,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_view
+from django.contrib import admin
 
 
 urlpatterns = [
@@ -21,10 +22,14 @@ urlpatterns = [
     path('add-to-cart/', views.add_to_cart, name = 'add_to_cart'),
     path('cart/', views.show_cart, name = 'show_cart'),
     path('checkout/', views.Checkout.as_view(), name = 'checkout'),
+    path('payment-done', views.payment_done, name = 'payment_done'),
+    path('orders', views.orders, name = 'orders'),
 
     path('plus-cart/', views.plus_cart, name = "plus_cart"),
     path('minus-cart/', views.minus_cart, name = "minus_cart"),
     path('remove-cart', views.remove_cart, name = "remove_cart"),
+
+    path('search/', views.search, name = 'search'),
 
     #login and registration
     path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
@@ -45,3 +50,7 @@ urlpatterns = [
     path('password-reset-complete', auth_view.PasswordResetCompleteView.as_view(template_name = 
     'app/password_reset_complete.html'), name = 'password_reset_complete'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = "Neel Dairy"
+admin.site.site_title = "Neel Dairy"
+admin.site.site_index_title = "Neel Dairy"

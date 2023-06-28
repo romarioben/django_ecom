@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <title> Produit Journalière | 
     {% block title %}
@@ -57,20 +58,11 @@
               <a class="nav-link text-white" href="{% url 'contact' %}">Contact US</a>
             </li>
 
-            <!-- <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li> -->
-            <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li> -->
+            
           </ul>
-          <form role="search">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <form role="search" action="/search" class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
+            <button type="submit" class="btn btn-outline-dark">Search</button>
           </form>
         </div>
 
@@ -83,13 +75,21 @@
             {{ request.user }}</a>
             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
               <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Orders</a></li>
+              <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
                <li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>
                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
             </ul>
           </li>
           <li class="nav-item mx-2">
-            <a href="#" class="nav-link text-white">Cart 4</a>
+            <a href="{% url 'show_cart' %}" class="nav-link text-white">Cart 
+              {% if total_item > 0 %}
+                <span class="badge bg-danger">
+              
+                {{ total_item }}
+              
+                </span>
+              {% endif %}
+            </a>
           </li>
             <li class="nav-item mx-2">
               <a href="#" class="nav-link text-white">Wishlist 4</a>

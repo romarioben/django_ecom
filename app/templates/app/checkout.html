@@ -90,7 +90,7 @@
                 // alert(response.razorpay_payment_id);
                 // alert(response.razorpay_order_id);
                 // alert(response.razorpay_signature)
-                window.location.href = `http://localhost:8000/paymentdone?order_id=${response.razorpay_order_id}&payment_id=${response.razorpay_payment_id}&cust_id=${form.element["custid"].value}`
+                window.location.href = `http://localhost:8000/payment-done?order_id=${response.razorpay_order_id}&payment_id=${response.razorpay_payment_id}&cust_id=${form.element["custid"].value}`
             },
             "prefill": {
                 "name": "Gaurav Kumar",
